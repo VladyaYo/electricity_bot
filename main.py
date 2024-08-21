@@ -9,13 +9,11 @@ def parser (url:str):
     res = requests.get(url=url)
     soup = BeautifulSoup(res.text,"lxml")
     hours = soup.find_all("div",  class_="scale_el_r")
-    print("parce")
     items = []
     for hour in hours:
         time = hour.get_text()
         items.append(time)
-    print(items)
-    return items
+    return [items]
 
 
 def send_message(message):
@@ -37,5 +35,6 @@ def send_message(message):
 
 if __name__ == "__main__":
     off_times = parser(url="https://lviv.energy-ua.info/grupa/1.1")
-    send_message(off_times)
+    if off_times:
+        send_message(off_times)
     # print(off_times)
