@@ -9,6 +9,7 @@ def parser (url:str):
     res = requests.get(url=url)
     soup = BeautifulSoup(res.text,"lxml")
     texts = soup.find_all("div", class_="grafik_string_list_item")
+    strings = ""
     for text in texts:
         jj = text.get_text()
         strings = ("Світла не буде: ", jj)
