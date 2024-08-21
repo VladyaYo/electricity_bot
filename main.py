@@ -8,12 +8,16 @@ load_dotenv()
 def parser (url:str):
     res = requests.get(url=url)
     soup = BeautifulSoup(res.text,"lxml")
+    texts = soup.find_all("div", class_="grafik_string_list_item")
+    for text in texts:
+        jj = text.get_text()
+        strings = ("Світла не буде: ", jj)
     hours = soup.find_all("div",  class_="scale_el_r")
     items = []
     for hour in hours:
         time = hour.get_text()
         items.append(time)
-    return items
+    return items, strings
 
 
 def send_message(message):
