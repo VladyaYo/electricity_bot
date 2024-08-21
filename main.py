@@ -13,7 +13,7 @@ def parser (url:str):
     for hour in hours:
         time = hour.get_text()
         items.append(time)
-    return [items]
+    return items
 
 
 def send_message(message):
