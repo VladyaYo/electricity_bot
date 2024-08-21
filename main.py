@@ -9,13 +9,13 @@ def parser (url:str):
     res = requests.get(url=url)
     soup = BeautifulSoup(res.text,"lxml")
     hours = soup.find_all("div",  class_="scale_el_r")
+    print("parce")
     items = []
     for hour in hours:
         time = hour.get_text()
         items.append(time)
     print(items)
     return items
-
 
 
 def send_message(message):
