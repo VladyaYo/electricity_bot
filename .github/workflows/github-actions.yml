@@ -1,8 +1,8 @@
 name: Run code
 on:
     push:
-    workflow_dispatch:
-
+    schedule:
+      - cron: '@hourly'
 env:
     TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
     TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
