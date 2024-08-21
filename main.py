@@ -36,4 +36,4 @@ def send_message(message):
 if __name__ == "__main__":
     off_times = parser(url="https://lviv.energy-ua.info/grupa/1.1")
     send_message(off_times)
-    # print(off_times)
+    print(off_times)
