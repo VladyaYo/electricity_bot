@@ -9,10 +9,10 @@ def parser (url:str):
     res = requests.get(url=url)
     soup = BeautifulSoup(res.text,"lxml")
     texts = soup.find_all("div", class_="grafik_string_list_item")
-    strings = ""
+    strings = []
     for text in texts:
         jj = text.get_text()
-        strings = ("Світла не буде: ", jj)
+        strings.append(jj)
     hours = soup.find_all("div",  class_="scale_el_r")
     items = []
     for hour in hours:
@@ -40,7 +40,6 @@ def send_message(message):
     return res.json()
 
 if __name__ == "__main__":
-    off_times = parser(url="https://lviv.energy-ua.info/grupa/1.1")
-    if off_times:
-        send_message(off_times)
+    off_times = parser(url="https://lviv.energy-ua.info/grupa/2.2")
+    send_message(off_times)
     # print(off_times)
